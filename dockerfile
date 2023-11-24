@@ -1,5 +1,5 @@
 # Use a base image compatible with ARM 64-bit (e.g., OpenJDK 8 for aarch64 on Alpine)
-FROM arm64v8/openjdk:8-jdk-alpine
+FROM arm64v8/openjdk:8-jdk-debian
 
 # Set the working directory
 WORKDIR /home/container
