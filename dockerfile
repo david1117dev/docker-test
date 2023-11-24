@@ -1,5 +1,5 @@
 # Use a base image compatible with ARM (e.g., OpenJDK 8 for ARM on Alpine)
-FROM arm32v7/openjdk:8-jdk-alpine
+FROM openjdk:8-jdk-alpine
 
 # Set the working directory
 WORKDIR /home/container
