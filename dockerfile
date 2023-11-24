@@ -18,11 +18,15 @@ ENV USER=container HOME=/home/container
 # Set the working directory
 WORKDIR /home/container
 
+
 # Copy the entrypoint script into the container
 COPY ./entrypoint.sh /entrypoint.sh
 
 # Give execution permissions to the entrypoint script
+USER root
 RUN chmod +x /entrypoint.sh
+USER container
+
 
 # Set the entrypoint to the script
 ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
