@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build and Publish Docker Images
 
 on:
   push:
@@ -6,12 +6,12 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        arch: [arm64]
+        java_version: [8, 11, 17, 18, 19, 20]
 
     steps:
       - name: Checkout code
@@ -32,6 +32,9 @@ jobs:
 
       - name: Build and push Docker image
         run: |
+          cd openjdk-${{ matrix.java_version }}
+          
+          # Build the Docker image with the appropriate tag
           docker buildx create --use
-          docker build . --tag ghcr.io/david1117dev/docker-test:latest
-          docker push ghcr.io/david1117dev/docker-test:latest
+          docker build . --tag ghcr.io/david1117dev/docker-test:${{ matrix.java_version }}
+          docker push ghcr.io/david1117dev/docker-test:${{ matrix.java_version }}
