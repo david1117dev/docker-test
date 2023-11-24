@@ -1,4 +1,4 @@
-FROM arm32v7/ibm-semeru-runtimes:open-19-jdk
+arm32v7/openjdk:19-jdk
 
 RUN apt-get update -y \
     && apt-get install -y lsof curl ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 \
