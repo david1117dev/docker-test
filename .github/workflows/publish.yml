@@ -31,6 +31,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
+          docker build . --tag ghcr.io/david1117dev/docker-test:latest
           docker buildx create --use
           docker buildx build --platform linux/${{ matrix.arch }} -t ghcr.io/david1117dev/docker-test:latest .
           docker push ghcr.io/david1117dev/docker-test:latest
